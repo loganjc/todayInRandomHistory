@@ -1,0 +1,31 @@
+<%- include('partials/header.ejs') %>
+
+<% if(!(locals.data)) { %> 
+    <div>
+        <p>nothing yet!</p>
+    </div>
+
+ <% } else { %>
+    <div class="bg-dark text-secondary px-4 py-5 text-center">
+        <div class="py-5">
+          <h1 class="display-5 fw-bold text-white">Today in <%= locals.data.year %>:</h1>
+          <div class="col-lg-6 mx-auto">
+            <p class="fs-5 mb-4"><%= locals.data.description %></p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+              <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold" onclick="openLink('<%= locals.data.wikipedia[0].wikipedia %>')">Learn More</button>
+              <form id="getRequest" method="get">
+                  <button type="submit" value="get" formaction="/" class="btn btn-outline-light btn-lg px-4">What Else</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+<% } %>
+
+<script>
+    function openLink(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+
+<%- include('partials/footer.ejs') %>
